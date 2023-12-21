@@ -24,15 +24,13 @@ class ConnectDialog(wx.Dialog):
         self.SetSizerAndFit(sizer)
 
     def on_connect(self, event):
-        server = self.server_text.GetValue().strip()  # Получение значения поля сервера
-        nickname = self.nickname_text.GetValue().strip()  # Получение значения поля никнейма
+        server = self.server_text.GetValue().strip()
+        nickname = self.nickname_text.GetValue().strip()
 
-        # Проверка корректности адреса сервера
         if not self.validate_server(server):
             wx.MessageBox("Invalid server address!", "Error", wx.OK | wx.ICON_ERROR)
             return
 
-        # Проверка корректности никнейма
         if not self.validate_nickname(nickname):
             wx.MessageBox("Invalid nickname, only english letters are allowed.", "Error", wx.OK | wx.ICON_ERROR)
             return
@@ -44,6 +42,5 @@ class ConnectDialog(wx.Dialog):
         return re.match(pattern, server) is not None
 
     def validate_nickname(self, nickname):
-        # Паттерн для проверки никнейма (только английские буквы)
         pattern = r"^[a-zA-Z]+$"
         return re.match(pattern, nickname) is not None

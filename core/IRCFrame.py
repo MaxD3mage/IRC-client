@@ -1,7 +1,7 @@
 import wx
 from threading import Thread
-from IRCClient import IRCClient
-from IRCConnect import ConnectDialog
+from core.IRCClient import IRCClient
+from core.IRCConnect import ConnectDialog
 
 
 class IRCFrame(wx.Frame):
@@ -71,7 +71,7 @@ class IRCFrame(wx.Frame):
     def add_chat_message(self, message):
         self.chat_text.AppendText(f"{message}\n")
 
-    def on_close(self, event):
+    def on_close(self):
         try:
             self.irc_client.disconnect()
             self.receive_thread.join()

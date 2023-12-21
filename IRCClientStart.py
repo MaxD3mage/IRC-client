@@ -1,5 +1,5 @@
 import wx
-from IRCFrame import IRCFrame
+from core.IRCFrame import IRCFrame
 
 
 if __name__ == '__main__':
